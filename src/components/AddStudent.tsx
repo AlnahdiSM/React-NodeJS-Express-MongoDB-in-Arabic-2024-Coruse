@@ -1,6 +1,7 @@
 import { Button, Paper, TextField } from "@mui/material";
 import { ChangeEvent, Dispatch, useRef } from "react";
 import { student } from "../utils/data";
+import { createStudent } from "../api/students";
 interface Props{
     setStudents:Dispatch<React.SetStateAction<student[]>>,
     students:student[]
@@ -8,7 +9,7 @@ interface Props{
 export default function AddStudent({setStudents,students}:Props) {
     const formData = {
         id: 0,
-        name: "",
+        fullName: "",
         email: "",
         age: "",
         class: "",
@@ -19,7 +20,7 @@ export default function AddStudent({setStudents,students}:Props) {
       const emailRef = useRef<HTMLInputElement>(null)
       const classRef = useRef<HTMLInputElement>(null)
   const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
-   formData.name= e.target.value
+   formData.fullName= e.target.value
     
   };
   const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -32,8 +33,10 @@ export default function AddStudent({setStudents,students}:Props) {
   const handleClassChange = (e: ChangeEvent<HTMLInputElement>) => {
     formData.class= e.target.value
   };
-  const handleSubmit = () => {
-    setStudents([...students,formData])
+  const handleSubmit = async () => {
+    const student = formData
+    const data = await createStudent(student)
+    setStudents([...students,data])
     if(nameRef.current){
         nameRef.current.value=""
     }

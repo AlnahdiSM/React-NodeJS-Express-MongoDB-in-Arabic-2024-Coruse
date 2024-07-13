@@ -1,7 +1,7 @@
 export const data:student[] = [
     {
         id: 0,
-        name: "",
+        fullName: "",
         email: "",
         age: "",
         class: "",
@@ -9,7 +9,7 @@ export const data:student[] = [
   ];
   export type student = {
     id: number
-    name: string
+    fullName: string
     email: string
     age: string
     class: string

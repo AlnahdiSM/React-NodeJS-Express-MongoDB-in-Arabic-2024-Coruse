@@ -1,21 +1,18 @@
 import mongoose, { Schema, Document } from "mongoose";
 
 interface IStudent extends Document {
-  firstName: string;
-  lastName: string;
+  fullName: string;
   age: number;
   email: string;
   class: string;
 }
 
 const studentSchema = new Schema<IStudent>({
-  firstName: {
+  fullName: {
     type: String,
     required: true,
   },
-  lastName: {
-    type: String,
-  },
+  
   age: {
     type: Number,
   },

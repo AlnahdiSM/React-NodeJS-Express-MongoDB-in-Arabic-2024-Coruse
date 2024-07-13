@@ -1,4 +1,4 @@
-import { data, student } from "../utils/data";
+import {  student } from "../utils/data";
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -26,7 +26,7 @@ export default function StudentTable({students}:Props) {
           {students.map((item) => {
             return (
               <TableRow>
-                <TableCell>{item.name}</TableCell>
+                <TableCell>{item.fullName}</TableCell>
                 <TableCell>{item.age}</TableCell>
                 <TableCell>{item.email}</TableCell>
                 <TableCell>{item.class}</TableCell>
